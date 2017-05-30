@@ -34,6 +34,7 @@ if [ "$1" = "--build-container" ]; then
     shift
     [ $# -lt 1 ] && FATAL "missing container name with option --build-container"
     export OSM_BUILD_CONTAINER=$1
+    shift
 fi
 
 if ! container_exists $OSM_BUILD_CONTAINER; then
