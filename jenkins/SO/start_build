@@ -25,7 +25,8 @@ OSM_JENKINS=$(dirname $HERE)
 # SET YOU MDG repository name here
 export OSM_MDG=SO
 OSM_load_config
-OSM_git_checkout "$@"
+export OSM_GIT_URL=https://github.com/igordcard
+OSM_git_checkout OSM_git_checkout "$@"
 
 trap 'WARNING "INTERRUPT"; exit 1' INT
 
