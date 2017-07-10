@@ -31,6 +31,14 @@ function cache() {
 
     lxc delete $container -f || true
     lxc launch ubuntu:$series $container
+    lxc config set "$container" environment.http_proxy "$http_proxy"
+    lxc config set "$container" environment.https_proxy "$https_proxy"
+    lxc config set "$container" environment.ftp_proxy "$ftp_proxy"
+    lxc config set "$container" environment.no_proxy "$no_proxy"
+    lxc config set "$container" environment.HTTP_PROXY "$HTTP_PROXY"
+    lxc config set "$container" environment.HTTPS_PROXY "$HTTPS_PROXY"
+    lxc config set "$container" environment.FTP_PROXY "$FTP_PROXY"
+    lxc config set "$container" environment.NO_PROXY "$NO_PROXY"
 
     # Wait for the container to get an IP address
     lxc exec $container -- bash -c "for i in {1..60}; do sleep 1; ping -c1 10.44.127.1 &> /dev/null && break; done"
