@@ -32,6 +32,7 @@ if [ "$1" = "--notest" ]; then
     NOTEST="y"
 fi
 
+export OSM_GIT_URL=https://github.com/igordcard
 OSM_git_checkout "$@"
 
 INFO "installing RO packages and dependencies from current repo (--noclone)"
